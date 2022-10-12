@@ -1,6 +1,8 @@
 #define CVECTOR_LOGARITHMIC_GROWTH
 #include "cvector.h"
 #include <stdio.h>
+#include <stddef.h>
+#include <stdint.h>
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     uint8_t** s_data = (uint8_t **) &data;
