@@ -17,6 +17,8 @@ add_executable(c-vector-example
 	example.c
 )
 
+add_executable(c-vector-fuzzer fuzzer.c)
+
 target_link_libraries(c-vector-example
 PUBLIC
 	${CMAKE_PROJECT_NAME}
