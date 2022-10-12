@@ -1,0 +1,5 @@
+project: c-vector
+target: c-vector-fuzz
+
+cmds:
+  - cmd: /c-vector-fuzz
