@@ -3,10 +3,8 @@
 #include <stdio.h>
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    uint8_t** s_data = (uint8_t **) &data;
 	cvector_vector_type(int) v = NULL;
-
-	(void)argc;
-	(void)argv;
 
 	/* add some elements to the back */
 	cvector_push_back(v, 10);
