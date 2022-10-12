@@ -13,6 +13,6 @@ RUN make
 
 
 FROM --platform=linux/amd64 ubuntu:20.04
-COPY --from=builder /c-vector/build/c-vector-fuzz /
+COPY --from=builder /c-vector/build/c-vector-fuzzer /
 
-CMD /c-vector-fuzz
+CMD /c-vector-fuzzer
