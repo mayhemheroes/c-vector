@@ -13,6 +13,9 @@ RUN make
 
 
 FROM --platform=linux/amd64 ubuntu:20.04
+
 COPY --from=builder /c-vector/build/mayhem/c-vector-fuzzer /
+COPY --from=builder /c-vector/build/mayhem/c-vector-fuzzer-memory /
+COPY --from=builder /c-vector/build/mayhem/c-vector-fuzzer-address /
 
 CMD /c-vector-fuzzer
