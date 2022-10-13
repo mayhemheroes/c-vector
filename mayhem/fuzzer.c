@@ -10,12 +10,11 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
 	/* add some elements to the back */
 	
-	cvector_push_back(v, s_data);
+	//cvector_push_back(v, s_data);
 	cvector_push_back(v, 10);
 	cvector_push_back(v, 20);
 	cvector_push_back(v, 30);
 	cvector_push_back(v, 40);
-	cvector_push_back(v, s_data);
 	
 
 	/* remove an element by specifying an array subscript */
@@ -26,8 +25,8 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 	cvector_pop_back(v);
 	cvector_pop_back(v);
 	cvector_pop_back(v);
-	cvector_pop_back(v);
-	cvector_pop_back(v);
+	//cvector_pop_back(v);
+	//cvector_pop_back(v);
 	
 
 	/* print out some stats about the vector */
