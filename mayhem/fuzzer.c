@@ -5,24 +5,51 @@
 #include <stddef.h>
 #include <stdint.h>
 
+
+// Convert to char *
+char *convert(uint8_t *a)
+{
+  char* buffer2;
+  int i;
+
+  buffer2 = malloc(9);
+  if (!buffer2)
+    return NULL;
+
+  buffer2[8] = 0;
+  for (i = 0; i <= 7; i++)
+    buffer2[7 - i] = (((*a) >> i) & (0x01)) + '0';
+
+  puts(buffer2);
+
+  return buffer2;
+}
+
 int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {
 
     printf("============\n");
-    int s_data = (int) data;
+    int s_data = (size_t) data;
     
     cvector_vector_type(int) v           = NULL;
     cvector_vector_type(int) a           = NULL;
     cvector_vector_type(int) b           = NULL;
     cvector_vector_type(int) c           = NULL;
     cvector_vector_type(char *) str_vect = NULL;
+    
+    volatile int random;
 
     /* add some elements to the back */
     cvector_push_back(v, s_data);
-    cvector_push_back(v, s_data);
-    cvector_push_back(v, s_data);
+    cvector_push_back(v, random);
+   
 
     /* and remove one too */
     cvector_pop_back(v);
+
+    for (unsigned int i = 0; i < size; i++) {
+            volatile int anotherStackValue;
+    	    cvector_push_back(v, anotherStackValue << i);
+    }    
 
     printf("capacity: %zu\n", cvector_capacity(v));
     
@@ -52,6 +79,7 @@ int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {
 
     putchar('\n');
 
+    cvector_push_back(a, s_data);
     cvector_push_back(a, 1);
     cvector_push_back(a, 5);
     cvector_push_back(a, 4);
@@ -124,6 +152,7 @@ int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {
     printf("c size        : %zu\n", cvector_size(c));
     cvector_free(c);
 
+    cvector_push_back(str_vect, convert(data));
     cvector_push_back(str_vect, strdup("Hello world"));
     cvector_push_back(str_vect, strdup("Good  bye world"));
     cvector_push_back(str_vect, strdup("not today"));
