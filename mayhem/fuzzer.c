@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-        uint8_t** s_data = (uint8_t **) &data;
+        //uint8_t** s_data = (uint8_t **) &data;
 	cvector_vector_type(int) v = NULL;
 
 	/* add some elements to the back */
