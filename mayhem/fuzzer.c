@@ -30,8 +30,6 @@ int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {
     printf("============\n");
     int s_data = (size_t) data;
     
-    cvector_vector_type(char) test           = NULL;
-        cvector_push_back(test, '\0');
     
     cvector_vector_type(int) v           = NULL;
     cvector_vector_type(int) a           = NULL;
@@ -168,6 +166,8 @@ int LLVMFuzzerTestOneInput(uint8_t *data, size_t size) {
     }
 
     cvector_free_each_and_free(str_vect, free);
-
+     cvector_vector_type(char) test           = NULL;
+    cvector_push_back(test, '\0');
+    
         return 0;
 }
