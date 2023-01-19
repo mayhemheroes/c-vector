@@ -17,6 +17,9 @@ add_executable(c-vector-example
 	example.c
 )
 
+
+add_subdirectory(mayhem)
+
 target_link_libraries(c-vector-example
 PUBLIC
 	${CMAKE_PROJECT_NAME}
